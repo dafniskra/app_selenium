@@ -1,9 +1,9 @@
 selenium
 flask
-requests==2.28.1
+requests
 webdriver-manager
-packaging==21.3
-flask-restful==0.3.9
-gunicorn==20.1.0
+packaging
+flask-restful
+gunicorn
 beautifulsoup4
 lxml
