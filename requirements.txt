@@ -7,3 +7,4 @@ flask-restful
 gunicorn
 beautifulsoup4
 lxml
+uvicorn
