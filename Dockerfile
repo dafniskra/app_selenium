@@ -9,7 +9,7 @@ RUN apt-get update && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Vérifier la version de Python et pip installées
-RUN python3 --version && python3 -m pip --version
+RUN python3 --version && pip3 --version
 
 # Afficher le répertoire d'installation des paquets Python
 RUN echo $(python3 -m site --user-base)
@@ -21,19 +21,16 @@ RUN cat requirements.txt
 # Ajouter les paquets Python installés au PATH
 ENV PATH /home/root/.local/bin:${PATH}
 
-# Mettre à jour pip en utilisant 'python3 -m pip'
-RUN python3 -m pip install --upgrade pip
-
-# Installer les dépendances une par une pour voir quelle installation échoue
-RUN python3 -m pip install --no-cache-dir selenium
-RUN python3 -m pip install --no-cache-dir flask
-RUN python3 -m pip install --no-cache-dir requests==2.28.1
-RUN python3 -m pip install --no-cache-dir webdriver-manager
-RUN python3 -m pip install --no-cache-dir packaging==21.3
-RUN python3 -m pip install --no-cache-dir flask-restful==0.3.9
-RUN python3 -m pip install --no-cache-dir gunicorn==20.1.0
-RUN python3 -m pip install --no-cache-dir beautifulsoup4
-RUN python3 -m pip install --no-cache-dir lxml
+# Installer les dépendances directement sans mise à jour de pip
+RUN pip3 install --no-cache-dir selenium
+RUN pip3 install --no-cache-dir flask
+RUN pip3 install --no-cache-dir requests==2.28.1
+RUN pip3 install --no-cache-dir webdriver-manager
+RUN pip3 install --no-cache-dir packaging==21.3
+RUN pip3 install --no-cache-dir flask-restful==0.3.9
+RUN pip3 install --no-cache-dir gunicorn==20.1.0
+RUN pip3 install --no-cache-dir beautifulsoup4
+RUN pip3 install --no-cache-dir lxml
 
 # Copier tous les fichiers de l'application dans le conteneur
 COPY . .
