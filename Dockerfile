@@ -19,5 +19,5 @@ RUN pip install uvicorn
 COPY . .
 
 # Démarrer l'application sans souci de variable d'environnement dans la commande CMD
-CMD ["python3", "main.py"]
+CMD ["python3", "webapp.py"]
 
